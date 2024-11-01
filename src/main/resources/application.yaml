@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: Task Manager API
+  profiles:
+    active: postgresql # h2 / postgresql
+  mvc:
+    favicon:
+      enabled: false
+    hidden-method:
+      filter:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: myuser
+    password: secret
+
+springdoc:
+  show-actuator: true
+  default-produces-media-type: application/json
+  swagger-ui:
+    path: /api
+    operationsSorter: method
+
+logging:
+  level:
+    root: WARN
+    com.pr.tm: TRACE
+    org.springframework: DEBUG
+    org.hibernate: ERROR
+    tomcat: TRACE
+  file:
+    name: logs/task-manager-api.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/%d{yyyy-MM, aux}/task-manager-api.%d{yyyy-MM-dd}.%i.log
+      max-file-size: 10MB
+      total-size-cap: 1GB
+      max-history: 32
+

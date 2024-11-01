@@ -1,0 +1,40 @@
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    restart: always
+    environment:
+      - 'RABBITMQ_DEFAULT_USER=myuser'
+      - 'RABBITMQ_DEFAULT_PASS=secret'
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+#  postgres:
+#    container_name: secondary_db_postgres
+#    image: postgres:16-alpine
+#    restart: always
+#    user: postgres
+#    environment:
+#      - POSTGRES_DB=secondary_db
+#      - POSTGRES_PASSWORD=password
+#      - TZ=Europe/Kiev
+#      - PGTZ=Europe/Kiev
+#    ports:
+#      - '5432:5432'
+#    healthcheck:
+#      test: ['CMD', 'pg_isready']
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#
+#  adminer:
+#    container_name: secondary_db_adminer
+#    image: adminer
+#    restart: always
+#    ports:
+#      - '8081:8080'
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
