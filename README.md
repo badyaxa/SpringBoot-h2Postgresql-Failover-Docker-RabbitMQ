@@ -1,0 +1,1 @@
+# SpringBoot-h2Postgresql-Failover-Docker-RabbitMQ
